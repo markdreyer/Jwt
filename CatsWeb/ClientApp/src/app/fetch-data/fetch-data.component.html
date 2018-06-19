@@ -1,0 +1,28 @@
+<h1>View Cats</h1>
+
+<p>Cats of Milwaukee.</p>
+
+<p *ngIf="!cats"><em>Loading...</em></p>
+
+<table class='table' *ngIf="cats">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cat of cats">
+      <td>{{ cat.date }}</td>
+      <td>{{ cat.name }}</td>
+      <td>{{ cat.age }}</td>
+      <!-- <td>{{ cat.value | currency }}</td> -->
+      <td>{{ GetCatValue(cat.name) | currency }}</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Cat Net Worth: {{ GetNetWorth() | currency }}
+</p>

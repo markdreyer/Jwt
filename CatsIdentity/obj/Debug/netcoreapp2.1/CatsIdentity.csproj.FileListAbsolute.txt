@@ -1,0 +1,14 @@
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.csprojAssemblyReference.cache
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.csproj.CoreCompileInputs.cache
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.RazorAssemblyInfo.cache
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.RazorAssemblyInfo.cs
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.AssemblyInfoInputs.cache
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.AssemblyInfo.cs
+C:\dev\CatsIdentity\bin\Debug\netcoreapp2.1\CatsIdentity.deps.json
+C:\dev\CatsIdentity\bin\Debug\netcoreapp2.1\CatsIdentity.runtimeconfig.json
+C:\dev\CatsIdentity\bin\Debug\netcoreapp2.1\CatsIdentity.runtimeconfig.dev.json
+C:\dev\CatsIdentity\bin\Debug\netcoreapp2.1\CatsIdentity.dll
+C:\dev\CatsIdentity\bin\Debug\netcoreapp2.1\CatsIdentity.pdb
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.RazorTargetAssemblyInfo.cache
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.dll
+C:\dev\CatsIdentity\obj\Debug\netcoreapp2.1\CatsIdentity.pdb

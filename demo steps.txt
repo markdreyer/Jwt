@@ -1,0 +1,9 @@
+
+PS C:\dev> dotnet new angular -n CatsWeb
+PS C:\dev> cd .\CatsWeb\
+PS C:\dev\CatsWeb> dotnet run
+
+PS C:\dev> dotnet new webapi -n CatsIdentity
+   --Add method CreateToken()
+   --Change launchsettings to 4000 ports
+   --[Authorize] on controller
