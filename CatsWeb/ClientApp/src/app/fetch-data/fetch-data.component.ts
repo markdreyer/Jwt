@@ -1,21 +1,24 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
 })
-export class FetchDataComponent {
+export class FetchDataComponent implements OnInit {
   public cats: Cat[];
   public catValues: CatValue[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Cat[]>(baseUrl + 'api/Cats/Cats').subscribe(result => {
+  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
+
+  }
+
+  ngOnInit() {
+    this.http.get<Cat[]>(this.baseUrl + 'api/Cats/Cats').subscribe(result => {
       this.cats = result;
     }, error => console.error(error));
 
-
-    http.get<Cat[]>(baseUrl + 'api/Cats/CatValues').subscribe(result => {
+    this.http.get<Cat[]>(this.baseUrl + 'api/Cats/CatValues').subscribe(result => {
       this.catValues = result;
     }, error => console.error(error));
   }

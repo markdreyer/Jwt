@@ -31,10 +31,10 @@ namespace CatsIdentity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
             services.AddMvc();
-
-             }
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -47,6 +47,15 @@ namespace CatsIdentity
             {
                 app.UseHsts();
             }
+
+            app.UseCors(
+              options => options
+              .WithOrigins("https://localhost:5001")
+              .AllowAnyMethod()
+              .AllowCredentials()
+            );
+
+
 
             app.UseAuthentication();
             app.UseMvc();

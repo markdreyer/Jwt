@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { AuthorizationService } from '../services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
       { path: 'unauthorized', component: UnauthorizedComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    AuthorizationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

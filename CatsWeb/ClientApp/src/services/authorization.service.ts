@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/do';
 import { map, tap } from 'rxjs/operators';
 
 import { Claims } from './claims';
@@ -18,8 +17,7 @@ export class AuthorizationService {
 
   login(): Observable<Claims> {
     return this.http.get<Token>('http://localhost:4000/api/token', {
-          withCredentials: true,
-          params: new HttpParams().set('appName', 'bap')
+          withCredentials: true
       }).pipe(
         tap(res => localStorage.setItem('id_token', res.token)),
         tap(res => localStorage.setItem('id_token_expires', res.expires)),
