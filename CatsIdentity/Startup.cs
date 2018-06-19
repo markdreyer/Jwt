@@ -50,7 +50,7 @@ namespace CatsIdentity
 
             app.UseCors(
               options => options
-              .WithOrigins("https://localhost:5001")
+              .WithOrigins("http://localhost:56223")
               .AllowAnyMethod()
               .AllowCredentials()
             );

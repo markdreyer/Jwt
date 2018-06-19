@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     this.authService.login().subscribe(
       data => {
         if (data.sub) {
-          console.warn(`User: ${this.authService.claims.sub} successfully authorized in app`);
+          console.warn(`User: ${this.authService.claims.sub} LOGGED IN`);
         } else {
           console.warn('User failed to authorize in app');
         }

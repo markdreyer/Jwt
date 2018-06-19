@@ -19,10 +19,10 @@
       <td>{{ cat.name }}</td>
       <td>{{ cat.age }}</td>
       <!-- <td>{{ cat.value | currency }}</td> -->
-      <td>{{ GetCatValue(cat.name) | currency }}</td>
+      <td *ngIf="catValues">{{ GetCatValue(cat.name) | currency }}</td>
     </tr>
   </tbody>
 </table>
-<p>
+<p *ngIf="catValues">
   Cat Net Worth: {{ GetNetWorth() | currency }}
 </p>
