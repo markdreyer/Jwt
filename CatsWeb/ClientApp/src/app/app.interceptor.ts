@@ -8,7 +8,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Skip auth for login requests
-    if (request.url.endsWith('Token')) {
+    if (request.url.toLowerCase().endsWith('token')) {
       return next.handle(request);
     }
     const clonedRequest = request.clone({ headers: request.headers.set('Authorization', `Bearer ${localStorage.getItem('id_token')}`) });
