@@ -54,7 +54,7 @@ namespace CatsIdentity.Controllers
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString(), ClaimValueTypes.String)
             };
 
-      if (!User.Identity.Name.EndsWith("Mark"))
+      if (User.Identity.Name.EndsWith("Mark"))
       {
         claims.Add(new Claim("CatAdmin", "True", ClaimValueTypes.Boolean));
       }

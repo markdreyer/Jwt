@@ -1,3 +1,5 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CatsWeb
 {
@@ -18,6 +21,31 @@ namespace CatsWeb
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+          /* JWT AUTH  */
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.Audience = "https://localhost";
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://localhost",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("this is my key, a production app would use public/private keys"))
+                    };
+                });
+            services.AddAuthorization(options =>
+            {
+                options
+                  .AddPolicy("CatAdmin", policy => policy.RequireClaim("CatAdmin", "True"));
+            });
+          /* JWT AUTH */
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSpaStaticFiles(configuration =>
             {
@@ -38,6 +66,10 @@ namespace CatsWeb
                 app.UseHttpsRedirection();
             }
 
+            /* JWT AUTH */
+            app.UseAuthentication();
+            /* JWT AUTH */
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -48,11 +80,9 @@ namespace CatsWeb
                     template: "{controller}/{action=Index}/{id?}");
             });
 
+            /*** SPA ***/
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
