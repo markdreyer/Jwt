@@ -35,7 +35,7 @@ namespace CatsWeb.Controllers
             });
         }
 
-        [Authorize(Policy = "CatAdmin")]
+        [Authorize(Policy = "CatsAdmin")]
         [HttpGet("[action]")]
         public IEnumerable<CatValue> CatValues()
         {

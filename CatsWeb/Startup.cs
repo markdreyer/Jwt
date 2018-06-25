@@ -36,13 +36,13 @@ namespace CatsWeb
                         ValidateIssuerSigningKey = true,
                         ValidateIssuer = true,
                         ValidIssuer = "https://localhost",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("this is my key, a production app would use public/private keys"))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("this is my key, it is super secret"))
                     };
                 });
             services.AddAuthorization(options =>
             {
                 options
-                  .AddPolicy("CatAdmin", policy => policy.RequireClaim("CatAdmin", "True"));
+                  .AddPolicy("CatsAdmin", policy => policy.RequireClaim("CatsAdmin"));
             });
           /* JWT AUTH */
 

@@ -3,5 +3,5 @@ export class Claims {
     sub: string;
     aud: string;
     exp: number;
-    CatsAdmin: string;
+    CatsAdmin: boolean;
 }

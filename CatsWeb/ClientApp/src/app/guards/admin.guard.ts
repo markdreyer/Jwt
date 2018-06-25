@@ -9,11 +9,11 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.authService.isLoggedIn && this.authService.claims.CatsAdmin === 'True') {
+      if (this.authService.isLoggedIn && this.authService.claims.CatsAdmin) {
         return true;
       } else {
         this.authService.login().subscribe(claims => {
-          if (claims.CatsAdmin !== 'True') {
+          if (!claims.CatsAdmin) {
             this.router.navigate(['/unauthorized']);
           } else {
             if (next) {

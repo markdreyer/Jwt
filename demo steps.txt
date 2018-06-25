@@ -5,5 +5,4 @@ PS C:\dev\CatsWeb> dotnet run
 
 PS C:\dev> dotnet new webapi -n CatsIdentity
    --Add method CreateToken()
-   --Change launchsettings to 4000 ports
    --[Authorize] on controller

@@ -37,7 +37,7 @@ namespace CatsIdentity.Controllers
         Audience = "https://localhost",
         SigningCredentials = new SigningCredentials(
               new SymmetricSecurityKey(
-                  Encoding.ASCII.GetBytes("this is my key, a production app would use public/private keys")
+                  Encoding.ASCII.GetBytes("this is my key, it is super secret")
               ), SecurityAlgorithms.HmacSha256),
         Subject = userIdentity,
         Expires = expirationDate
@@ -56,7 +56,7 @@ namespace CatsIdentity.Controllers
 
       if (User.Identity.Name.EndsWith("Mark"))
       {
-        claims.Add(new Claim("CatAdmin", "True", ClaimValueTypes.Boolean));
+        claims.Add(new Claim("CatsAdmin", "True", ClaimValueTypes.Boolean));
       }
       return claims;
     }
